@@ -8,9 +8,9 @@ public record PackingItem
   
   public uint Quantity { get; }
   
-  public bool IsPacked { get; }
+  public bool IsPacked { get; init; } //Initialised in constructor or object intiailser. 
 
-  public PackingItem(string name, uint quantity, bool isPacked)
+  public PackingItem(string name, uint quantity)
   {
     if (string.IsNullOrWhiteSpace(name))
     {
@@ -18,6 +18,6 @@ public record PackingItem
     }
     Name = name;
     Quantity = quantity;
-    IsPacked = isPacked;
+    IsPacked = false;
   }
 }
