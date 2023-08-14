@@ -9,17 +9,22 @@ namespace PackIT.Domain.Entities;
 public class PackingList : AggregateRoot<PackingListId>
 {
   
-  public new PackingListId Id { get; private set; }
+  public new PackingListId Id { get; private set; } = null!;
 
-  private PackingListName _name;
+  private PackingListName _name = null!;
 
-  private Localisation _localisation;
+  private Localisation _localisation = null!;
 
   private readonly LinkedList<PackingItem> _packingItems = new();
 
   private PackingList(Guid id, PackingListName name, Localisation localisation, LinkedList<PackingItem> packingItems) : this(id,name,localisation)
   {
     AddPackingItems(packingItems);
+  }
+
+  public PackingList()
+  {
+    
   }
   
   internal PackingList(Guid id, PackingListName name, Localisation localisation)

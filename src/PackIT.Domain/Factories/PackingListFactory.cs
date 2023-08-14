@@ -5,7 +5,7 @@ using PackIT.Domain.ValueObject;
 
 namespace PackIT.Domain.Factories;
 
-class PackingListFactory : IPackingListFactory
+public sealed class PackingListFactory : IPackingListFactory
 {
   private readonly IEnumerable<IPackingItemsPolicy> _policies;
 
