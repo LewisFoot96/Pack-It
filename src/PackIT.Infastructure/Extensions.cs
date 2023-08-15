@@ -5,7 +5,9 @@ using PackIT.Domain.Factories;
 using PackIT.Domain.Policies;
 using PackIT.Infastructure.EF;
 using PackIT.Infastructure.EF.Options;
+using PackIT.Infastructure.Logging;
 using PackIT.Infastructure.Services;
+using PackIT.Shared.Abstractions.Commands;
 using PackIT.Shared.Commands;
 using PackIT.Shared.Options;
 using PackIT.Shared.Queries;
@@ -19,6 +21,7 @@ public static class Extensions
     services.AddPostgres(configuration);
     services.AddQueries();
     services.AddSingleton<IWeatherService, DumpWeatherService>();
+    services.TryDecorate(typeof(ICommandHandler<>), typeof(LoggingCommandHandlerDecorator<>));
     return services;
   }
 }
