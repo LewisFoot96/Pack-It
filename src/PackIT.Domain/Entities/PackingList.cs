@@ -42,6 +42,8 @@ public class PackingList : AggregateRoot<PackingListId>
     {
       throw new PackingItemAlreadyExistsException(_name, packingItem.Name);
     }
+
+    _packingItems.AddLast(packingItem);
     AddEvent(new PackingItemAdded(this, packingItem ));
   }
   
